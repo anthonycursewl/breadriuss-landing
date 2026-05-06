@@ -1,0 +1,379 @@
+.page {
+  padding-top: var(--space-16);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  padding: var(--space-24) 0;
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.heroContent {
+  flex: 1;
+  max-width: 700px;
+}
+
+.heroDecor {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  opacity: 0.3;
+}
+
+.decorLine {
+  width: 80px;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+.decorSquare {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-accent);
+  transform: rotate(45deg);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1;
+}
+
+.titleOutline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-text-muted);
+  margin: 0 0 var(--space-6) 0;
+  line-height: 1;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.375rem);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 560px;
+  text-align: left;
+}
+
+/* SECTION LABEL */
+.sectionLabel {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+/* MISSION */
+.mission {
+  padding: var(--space-24) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.missionContent {
+  max-width: 800px;
+  margin-left: auto;
+}
+
+.missionTitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin: 0 0 var(--space-6) 0;
+  line-height: 1.1;
+  text-align: right;
+}
+
+.missionText {
+  font-size: clamp(1rem, 2vw, 1.375rem);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin: 0 0 var(--space-6) 0;
+  text-align: right;
+}
+
+/* VALUES - TIMELINE */
+.values {
+  padding: var(--space-24) 0;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.valuesHeader {
+  margin-bottom: var(--space-16);
+  text-align: center;
+}
+
+.valuesTitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.valuesTimeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: 0 var(--space-8);
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--color-border) 10%, var(--color-border) 90%, transparent);
+  transform: translateX(-50%);
+}
+
+.valueCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.cardLeft {
+  justify-content: flex-start;
+  padding-right: calc(50% + var(--space-6));
+}
+
+.cardRight {
+  justify-content: flex-end;
+  padding-left: calc(50% + var(--space-6));
+}
+
+.timelineDot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px var(--color-accent);
+  z-index: 1;
+}
+
+.valueContent {
+  position: relative;
+  padding: var(--space-6);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  max-width: 480px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.valueContent:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+}
+
+.cardRight .valueContent {
+  text-align: right;
+}
+
+.valueNumber {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: var(--space-1);
+}
+
+.valueTitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.valueDesc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0 0 var(--space-4) 0;
+}
+
+.valueMetric {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.cardRight .valueMetric {
+  align-items: baseline;
+}
+
+.metricValue {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.metricLabel {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* CTA */
+.cta {
+  padding: var(--space-24) 0;
+}
+
+.ctaContent {
+  max-width: 600px;
+}
+
+.ctaTitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.ctaText {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin: 0 0 var(--space-6) 0;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .page {
+    padding-top: var(--space-12);
+  }
+
+  .hero .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+
+  .heroDecor {
+    display: none;
+  }
+
+  .missionContent {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .missionTitle,
+  .missionText {
+    text-align: left;
+  }
+
+  .valuesTimeline {
+    padding: 0;
+  }
+
+  .timelineLine {
+    left: var(--space-6);
+  }
+
+  .valueCard {
+    padding: 0 0 0 var(--space-12);
+  }
+
+  .cardLeft,
+  .cardRight {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: calc(var(--space-6) + var(--space-6));
+  }
+
+  .timelineDot {
+    left: var(--space-6);
+  }
+
+  .valueContent {
+    max-width: 100%;
+    padding: var(--space-6);
+  }
+
+  .cardRight .valueContent {
+    text-align: left;
+  }
+
+  .cardRight .valueMetric {
+    align-items: flex-start;
+  }
+
+  .valueNumber {
+    font-size: 2.5rem;
+  }
+
+  .valueTitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: var(--space-16) 0;
+  }
+
+  .title,
+  .titleOutline {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .mission,
+  .values,
+  .cta {
+    padding: var(--space-16) 0;
+  }
+}

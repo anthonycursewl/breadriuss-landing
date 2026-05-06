@@ -1,0 +1,214 @@
+.section {
+  padding: var(--space-24) var(--space-8);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-16);
+  text-align: center;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  position: relative;
+}
+
+[data-theme="light"] .num.lightGlow {
+  color: rgba(107, 107, 107, 0.7);
+  text-shadow:
+    0 0 12px rgba(107, 107, 107, 0.3),
+    0 0 24px rgba(107, 107, 107, 0.15);
+}
+
+[data-theme="dark"] .num.darkGlow {
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.4),
+    0 0 24px rgba(255, 255, 255, 0.2),
+    0 0 36px rgba(255, 255, 255, 0.1);
+}
+
+.step {
+  text-align: center;
+  padding: 0 var(--space-4);
+  position: relative;
+}
+
+.numWrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-4);
+}
+
+.num {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: rgba(107, 107, 107, 0.12);
+  line-height: 1;
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.stepDesc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.errorModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  animation: modalAppear 0.3s ease-out;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.errorContent {
+  background: var(--color-background);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  text-align: center;
+  box-shadow:
+    0 0 30px rgba(255, 100, 100, 0.12),
+    0 15px 40px rgba(0, 0, 0, 0.25);
+  width: 260px;
+  pointer-events: auto;
+}
+
+.errorIcon {
+  color: rgba(255, 100, 100, 0.8);
+  margin-bottom: var(--space-3);
+  animation: iconPulse 1s ease-in-out infinite;
+}
+
+.errorIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+@keyframes iconPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.errorTitle {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255, 100, 100, 0.9);
+  margin-bottom: var(--space-2);
+  letter-spacing: 0.05em;
+}
+
+.errorSubtitle {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.loadingBar {
+  height: 3px;
+  background: rgba(255, 100, 100, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loadingProgress {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 100, 100, 0.6), rgba(255, 100, 100, 0.9));
+  border-radius: 2px;
+  animation: loadingProgress 2s ease-in-out forwards;
+}
+
+@keyframes loadingProgress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@media (max-width: 1024px) {
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-10);
+    row-gap: var(--space-8);
+  }
+
+  .step::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: calc(50% + 80px);
+    width: calc(100% - 160px);
+    height: 2px;
+    background: rgba(107, 107, 107, 0.08);
+  }
+
+  .step:last-child::before {
+    display: none;
+  }
+
+  .step:nth-child(2)::before {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .step::before {
+    display: none;
+  }
+
+  .section {
+    padding: var(--space-16) var(--space-4);
+  }
+
+  .errorContent {
+    width: 240px;
+  }
+}

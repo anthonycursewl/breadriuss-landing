@@ -1,0 +1,273 @@
+.page {
+  padding-top: var(--space-16);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  padding: var(--space-24) 0 var(--space-20);
+  text-align: center;
+  overflow: hidden;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.matrixGrid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  opacity: 0.3;
+}
+
+.matrixRow {
+  display: flex;
+  gap: var(--space-5);
+}
+
+.matrixDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  filter: blur(3px);
+  animation: matrixPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes matrixPulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  margin: 0 0 var(--space-6) 0;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--color-text-muted);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* FORM SECTION */
+.formSection {
+  padding: var(--space-20) 0;
+}
+
+.form {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8) var(--space-10);
+}
+
+.inputGroup {
+  position: relative;
+  padding-top: var(--space-6);
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  width: 100%;
+  padding: var(--space-3) 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 1rem;
+  color: var(--color-text);
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+  outline: none;
+  resize: none;
+}
+
+.inputGroup textarea {
+  min-height: 100px;
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus {
+  border-bottom-color: var(--color-accent);
+}
+
+.inputGroup label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.inputGroup input:focus ~ label,
+.inputGroup input:not(:placeholder-shown) ~ label,
+.inputGroup textarea:focus ~ label,
+.inputGroup textarea:not(:placeholder-shown) ~ label {
+  color: var(--color-accent);
+}
+
+.inputLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.inputGroup input:focus ~ .inputLine,
+.inputGroup textarea:focus ~ .inputLine {
+  width: 100%;
+}
+
+.inputFull {
+  grid-column: 1 / -1;
+}
+
+/* SUBMIT BUTTON */
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-10);
+  padding: var(--space-4) var(--space-8);
+  background: var(--color-text);
+  color: var(--color-background);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.submitBtn svg {
+  transition: transform 0.2s ease;
+}
+
+.submitBtn:hover svg {
+  transform: translateX(4px);
+}
+
+/* ALT CONTACT */
+.altContact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-12);
+  padding-top: var(--space-8);
+}
+
+.altContact span {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.emailLink {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.emailLink:hover {
+  color: var(--color-text);
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .page {
+    padding-top: var(--space-12);
+  }
+
+  .hero {
+    padding: var(--space-16) 0 var(--space-16);
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .inputGroup {
+    padding-top: var(--space-5);
+  }
+
+  .submitBtn {
+    width: 100%;
+    justify-content: center;
+    margin-top: var(--space-8);
+  }
+
+  .altContact {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 768px) {
+  .formSection {
+    padding-top: 2rem;
+  }
+}

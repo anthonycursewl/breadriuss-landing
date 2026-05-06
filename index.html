@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="color-scheme" content="dark light" />
+
+  <link rel="icon" type="image/svg+xml" href="/brd/brd_lg_dark.svg" id="favicon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/brd/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <link rel="canonical" href="https://breadriuss.dev" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="author" content="BREADRIUSS" />
+  <meta name="publisher" content="BREADRIUSS" />
+
+  <title>Breadriuss | Next-Generation Cybersecurity Solutions</title>
+  <meta name="description"
+    content="BREADRIUSS delivers enterprise-grade cybersecurity powered by quantum-inspired neural networks. Advanced threat detection, adaptive security, and 99.99% uptime for Fortune 500 companies." />
+  <meta name="keywords"
+    content="cybersecurity, enterprise security, threat detection, quantum security, neural networks, next-generation security, cybersecurity solutions, enterprise protection" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://breadriuss.dev" />
+  <meta property="og:site_name" content="BREADRIUSS" />
+  <meta property="og:title" content="BREADRIUSS | Next-Generation Cybersecurity Solutions" />
+  <meta property="og:description"
+    content="Advanced threat detection powered by quantum-inspired neural networks. Protect your enterprise with next-generation adaptive security." />
+  <meta property="og:image" content="https://breadriuss.dev/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="BREADRIUSS - Next-Generation Cybersecurity" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@breadriuss" />
+  <meta name="twitter:creator" content="@breadriuss" />
+  <meta name="twitter:title" content="BREADRIUSS | Next-Generation Cybersecurity Solutions" />
+  <meta name="twitter:description" content="Advanced threat detection powered by quantum-inspired neural networks." />
+  <meta name="twitter:image" content="https://breadriuss.dev/og-image.png" />
+  <meta name="twitter:image:alt" content="BREADRIUSS - Next-Generation Cybersecurity" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://breadriuss.dev/#organization",
+          "name": "BREADRIUSS",
+          "description": "Next-generation cybersecurity powered by quantum-inspired neural networks",
+          "url": "https://breadriuss.dev",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://breadriuss.dev/brd/brd_lg_dark.svg",
+            "width": 200,
+            "height": 50
+          },
+          "sameAs": [
+            "https://linkedin.com/company/breadriuss",
+            "https://twitter.com/breadriuss"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://breadriuss.dev/#website",
+          "url": "https://breadriuss.dev",
+          "name": "BREADRIUSS",
+          "publisher": { "@id": "https://breadriuss.dev/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://breadriuss.dev/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://breadriuss.dev/#webpage",
+          "url": "https://breadriuss.dev",
+          "name": "BREADRIUSS | Next-Generation Cybersecurity Solutions",
+          "about": { "@id": "https://breadriuss.dev/#organization" },
+          "description": "Advanced threat detection powered by quantum-inspired neural networks. Protect your enterprise with next-generation adaptive security.",
+          "isPartOf": { "@id": "https://breadriuss.dev/#website" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://breadriuss.dev/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://breadriuss.dev"
+            }
+          ]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://breadriuss.dev/#professionalService",
+          "name": "BREADRIUSS Cybersecurity Services",
+          "description": "Enterprise-grade cybersecurity solutions including threat detection, security architecture, and 24/7 monitoring.",
+          "provider": { "@id": "https://breadriuss.dev/#organization" },
+          "areaServed": "Worldwide",
+          "serviceType": ["Cybersecurity", "Threat Detection", "Security Architecture"]
+        }
+      ]
+    }
+    </script>
+
+  <script>
+    (function () {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = stored === 'dark' || (stored !== 'light' && prefersDark);
+      document.getElementById('favicon').href = isDark ? '/brd/brd_lg_dark.svg' : '/brd/brd_lg_light.svg';
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

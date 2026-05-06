@@ -1,0 +1,12 @@
+export { Hero } from './Hero';
+export { About } from './About';
+export { Services } from './Services';
+export { Portfolio } from './Portfolio';
+export { Testimonials } from './Testimonials';
+export { CTA } from './CTA';
+export { ServicesSection } from './ServicesSection';
+export { PhilosophySection } from './PhilosophySection';
+export { ProcessSection } from './ProcessSection';
+export { StatsSection } from './StatsSection';
+export { FAQSection } from './FAQSection';
+export { FinalCTA } from './FinalCTA';
