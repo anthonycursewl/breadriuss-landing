@@ -107,6 +107,7 @@
     opacity: 0;
     transform: translateX(-50%) translateY(4px);
   }
+
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
@@ -154,24 +155,96 @@
   }
 }
 
-.mobileMenu {
+.mobileMenuPortal {
   position: fixed;
-  top: 70px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--color-background);
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobileMenuPortalOpen {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
   z-index: 99;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.mobileMenuOpen {
+.mobileMenuPortalOpen .mobileMenuOverlay {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5) var(--space-4);
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+[data-theme="light"] .mobileMenu {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.mobileMenuPortalOpen .mobileMenu {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.mobileMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobileMenuLogo {
+  height: 36px;
+  width: auto;
+}
+
+.mobileMenuClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: all 0.2s ease;
+}
+
+.mobileMenuClose:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .mobileMenuContent {
@@ -179,12 +252,13 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 100%;
-  gap: var(--space-6);
-  padding: var(--space-8) var(--space-6);
+  flex: 1;
+  gap: var(--space-4);
+  padding-top: var(--space-8);
 }
 
 .mobileLink {
+  position: relative;
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -192,20 +266,29 @@
   text-decoration: none;
   opacity: 0;
   transform: translateX(-20px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
 }
 
-.mobileMenuOpen .mobileLink {
+.mobileMenuPortalOpen .mobileLink {
   opacity: 1;
   transform: translateX(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
 }
 
-.mobileMenuOpen .mobileLink:nth-child(1) {
+.mobileMenuPortalOpen .mobileLink:nth-child(1) {
   transition-delay: 0.1s;
 }
 
-.mobileMenuOpen .mobileLink:nth-child(2) {
+.mobileMenuPortalOpen .mobileLink:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.mobileMenuPortalOpen .mobileLink:nth-child(3) {
   transition-delay: 0.2s;
+}
+
+.mobileMenuPortalOpen .mobileLink:nth-child(4) {
+  transition-delay: 0.25s;
 }
 
 .mobileLink:hover {
@@ -232,6 +315,10 @@
 
 @media (min-width: 768px) {
   .mobileMenuBtn {
+    display: none;
+  }
+
+  .mobileMenuPortal {
     display: none;
   }
 }
