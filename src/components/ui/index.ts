@@ -5,3 +5,4 @@ export { AnimatedText } from './AnimatedText';
 export { ScrollReveal } from './ScrollReveal';
 export { Link } from './Link';
 export { Modal } from './Modal';
+export { ErrorBoundary } from './ErrorBoundary';

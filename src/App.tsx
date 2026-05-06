@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter, useLocation } from 'react-router-dom';
 import { Layout } from './components/layout';
 import { Hero, StatsSection, ServicesSection, DigitalSolutions, PhilosophySection, ProcessSection, FAQSection, FinalCTA } from './components/sections';
-import { AboutPage, ContactPage, SolutionsPage } from './pages';
+import { AboutPage, ContactPage, SolutionsPage, NotFoundPage } from './pages';
+import { ErrorBoundary } from './components/ui';
 import './styles/variables.css';
 
 function ScrollToTop() {
@@ -44,10 +45,18 @@ const router = createBrowserRouter([
       { path: 'solutions', element: <SolutionsPage /> },
     ],
   },
+  {
+    path: '*',
+    element: <NotFoundPage />,
+  },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ErrorBoundary>
+      <RouterProvider router={router} />
+    </ErrorBoundary>
+  );
 }
 
 export default App;
