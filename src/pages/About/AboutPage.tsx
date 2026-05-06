@@ -1,6 +1,7 @@
 import { Container } from '../../components/ui';
 import { Link } from '../../components/ui/Link';
 import { AnimatedText } from '../../components/ui/AnimatedText';
+import { ScrollReveal } from '../../components/ui/ScrollReveal';
 import styles from './About.module.css';
 
 const values = [
@@ -60,50 +61,58 @@ export function AboutPage() {
 
       <section className={styles.mission}>
         <Container>
-          <div className={styles.missionContent}>
-            <span className={styles.sectionLabel}>Our Mission</span>
-            <h2 className={styles.missionTitle}>
-              Protection through innovation and expertise
-            </h2>
-            <p className={styles.missionText}>
-              In an era where cyber threats evolve daily, Breadriuss stands as the definitive
-              shield for enterprise infrastructure. Our mission is to provide unparalleled
-              protection through innovation, expertise, and unwavering commitment to our clients'
-              security.
-            </p>
-            <p className={styles.missionText}>
-              All assessments and security consultations are delivered through our trusted
-              partner <Link href="https://nakomi.studio" external>Nakomi Studio</Link>, ensuring
-              the highest quality of service and expertise.
-            </p>
-          </div>
+          <ScrollReveal animation="slide-left" delay={0.1} duration={0.8}>
+            <div className={styles.missionContent}>
+              <span className={styles.sectionLabel}>Our Mission</span>
+              <h2 className={styles.missionTitle}>
+                Protection through innovation and expertise
+              </h2>
+              <p className={styles.missionText}>
+                In an era where cyber threats evolve daily, Breadriuss stands as the definitive
+                shield for enterprise infrastructure. Our mission is to provide unparalleled
+                protection through innovation, expertise, and unwavering commitment to our clients'
+                security.
+              </p>
+              <p className={styles.missionText}>
+                All assessments and security consultations are delivered through our trusted
+                partner <Link href="https://nakomi.studio" external>Nakomi Studio</Link>, ensuring
+                the highest quality of service and expertise.
+              </p>
+            </div>
+          </ScrollReveal>
         </Container>
       </section>
 
       <section className={styles.values}>
         <Container>
-          <div className={styles.valuesHeader}>
-            <span className={styles.sectionLabel}>What We Stand For</span>
-            <h2 className={styles.valuesTitle}>Our Values</h2>
-          </div>
+          <ScrollReveal animation="fade" delay={0.1} duration={0.6}>
+            <div className={styles.valuesHeader}>
+              <span className={styles.sectionLabel}>What We Stand For</span>
+              <h2 className={styles.valuesTitle}>Our Values</h2>
+            </div>
+          </ScrollReveal>
           <div className={styles.valuesTimeline}>
             <div className={styles.timelineLine} />
             {values.map((v, i) => (
-              <div
+              <ScrollReveal
                 key={v.title}
-                className={`${styles.valueCard} ${i % 2 === 0 ? styles.cardLeft : styles.cardRight}`}
+                animation={i % 2 === 0 ? 'slide-right' : 'slide-left'}
+                delay={i * 0.15}
+                duration={0.8}
               >
-                <div className={styles.timelineDot} />
-                <div className={styles.valueContent}>
-                  <span className={styles.valueNumber}>0{i + 1}</span>
-                  <h3 className={styles.valueTitle}>{v.title}</h3>
-                  <p className={styles.valueDesc}>{v.description}</p>
-                  <div className={styles.valueMetric}>
-                    <span className={styles.metricValue}>{v.metric}</span>
-                    <span className={styles.metricLabel}>{v.metricLabel}</span>
+                <div className={`${styles.valueCard} ${i % 2 === 0 ? styles.cardLeft : styles.cardRight}`}>
+                  <div className={styles.timelineDot} />
+                  <div className={styles.valueContent}>
+                    <span className={styles.valueNumber}>0{i + 1}</span>
+                    <h3 className={styles.valueTitle}>{v.title}</h3>
+                    <p className={styles.valueDesc}>{v.description}</p>
+                    <div className={styles.valueMetric}>
+                      <span className={styles.metricValue}>{v.metric}</span>
+                      <span className={styles.metricLabel}>{v.metricLabel}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </Container>
@@ -111,17 +120,19 @@ export function AboutPage() {
 
       <section className={styles.cta}>
         <Container>
-          <div className={styles.ctaContent}>
-            <span className={styles.sectionLabel}>Get Started</span>
-            <h2 className={styles.ctaTitle}>Partner With Us</h2>
-            <p className={styles.ctaText}>
-              Ready to strengthen your security posture? Connect with our team through
-              Nakomi Studio to schedule your assessment.
-            </p>
-            <Link href="https://nakomi.studio" external>
-              Visit Nakomi Studio
-            </Link>
-          </div>
+          <ScrollReveal animation="fade" delay={0.1} duration={0.8}>
+            <div className={styles.ctaContent}>
+              <span className={styles.sectionLabel}>Get Started</span>
+              <h2 className={styles.ctaTitle}>Partner With Us</h2>
+              <p className={styles.ctaText}>
+                Ready to strengthen your security posture? Connect with our team through
+                Nakomi Studio to schedule your assessment.
+              </p>
+              <Link href="https://nakomi.studio" external>
+                Visit Nakomi Studio
+              </Link>
+            </div>
+          </ScrollReveal>
         </Container>
       </section>
     </main>

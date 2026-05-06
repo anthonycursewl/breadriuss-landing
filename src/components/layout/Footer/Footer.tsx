@@ -1,5 +1,5 @@
 import { Container } from '../../ui';
-import { useThemeStore } from '../../../stores/themeStore';
+import { useTheme } from '../../providers/ThemeProvider';
 import styles from './Footer.module.css';
 
 const footerLinks = {
@@ -24,7 +24,7 @@ const footerLinks = {
 };
 
 export function Footer() {
-  const resolvedTheme = useThemeStore((state) => state.resolvedTheme);
+  const { resolvedTheme } = useTheme();
 
   return (
     <footer className={styles.footer}>
@@ -67,11 +67,6 @@ export function Footer() {
               ))}
             </ul>
           </div>
-        </div>
-
-        <div className={styles.bottom}>
-          <p>2026 BREADRIUSS. All rights reserved.</p>
-          <p>Securing the future, one threat at a time.</p>
         </div>
       </Container>
     </footer>

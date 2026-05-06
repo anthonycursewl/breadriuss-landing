@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback, memo } from 'react';
-import { useThemeStore } from '../../../stores';
+import { useTheme } from '../../providers/ThemeProvider';
 import styles from './DropdownToggle.module.css';
 
 export interface DropdownOption {
@@ -138,8 +138,7 @@ interface ThemeToggleProps {
 }
 
 export const ThemeToggle = memo(function ThemeToggle({ className = '' }: ThemeToggleProps) {
-  const theme = useThemeStore(state => state.theme);
-  const setTheme = useThemeStore(state => state.setTheme);
+  const { theme, setTheme } = useTheme();
 
   const handleChange = useCallback((newTheme: string) => {
     setTheme(newTheme as 'light' | 'dark' | 'auto');

@@ -5,7 +5,7 @@ import styles from './ServicesSection.module.css';
 const services = [
   {
     title: 'Threat Detection',
-    description: 'Advanced neural networks trained on millions of attack vectors. Zero-day vulnerability identification with 99.7% accuracy.',
+    description: 'Our neural-network-powered detection system analyzes patterns across 50M+ threat vectors in real-time. With 99.7% accuracy in identifying zero-day vulnerabilities, we catch what traditional signature-based tools miss. Continuous model training ensures protection evolves faster than emerging attack vectors.',
     code: `const detector = new ThreatEngine({
   model: 'neural-v3',
   sensitivity: 'enterprise',
@@ -15,7 +15,7 @@ const services = [
   },
   {
     title: 'Infrastructure',
-    description: 'Distributed architecture with automatic failover. 99.99% uptime across multi-region deployments. Sub-50ms response times globally.',
+    description: 'Multi-region distributed architecture with automatic failover guarantees 99.99% uptime SLA. Our edge network spans 12 global regions, delivering sub-50ms response times worldwide. Auto-scaling infrastructure handles traffic spikes without manual intervention, eliminating performance degradation during critical moments.',
     code: `const infra = deploy.cluster({
   regions: ['us-east', 'eu-central', 'ap-south'],
   replicas: 3,
@@ -25,7 +25,7 @@ const services = [
   },
   {
     title: 'Performance',
-    description: 'Systems that scale linearly with demand. Load balancing, edge caching, and optimized query paths for demanding workloads.',
+    description: 'Linear scaling architecture maintains consistent response times under any load. Edge caching at 200+ global locations, intelligent load balancing, and optimized database query paths ensure your applications handle enterprise workloads without compromising speed or reliability.',
     code: `const metrics = monitor.performance({
   target: '<50ms p99',
   alerts: ['degradation', 'spike'],

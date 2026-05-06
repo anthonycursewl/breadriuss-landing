@@ -1,15 +1,23 @@
 import { useState, useEffect } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useScrollPosition } from '../../../hooks';
 import { Container } from '../../ui';
 import { ThemeToggle } from '../../ui/DropdownToggle';
-import { useThemeStore } from '../../../stores/themeStore';
+import { useTheme } from '../../providers/ThemeProvider';
 import styles from './Header.module.css';
 
+const NAV_LINKS = [
+  { path: '/', label: 'Home' },
+  { path: '/about', label: 'About' },
+  { path: '/solutions', label: 'Solutions' },
+  { path: '/contact', label: 'Contact' },
+];
+
 export function Header() {
+  const { pathname } = useLocation();
   const scrollY = useScrollPosition();
   const isScrolled = scrollY > 10;
-  const resolvedTheme = useThemeStore((state) => state.resolvedTheme);
+  const { resolvedTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -19,7 +27,7 @@ export function Header() {
   }, [isScrolled]);
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
+    <header className={`${styles.header} ${isScrolled || mobileMenuOpen ? styles.scrolled : ''}`}>
       <Container wide>
         <nav className={styles.nav}>
           <RouterLink to="/" className={styles.logoLink}>
@@ -31,8 +39,18 @@ export function Header() {
           </RouterLink>
 
           <div className={styles.links}>
-            <RouterLink to="/about" className={styles.link}>About</RouterLink>
-            <RouterLink to="/contact" className={styles.link}>Contact</RouterLink>
+            {NAV_LINKS.filter(link => link.path !== '/').map(link => (
+              <RouterLink
+                key={link.path}
+                to={link.path}
+                className={`${styles.link} ${pathname === link.path ? styles.activeLink : ''}`}
+              >
+                {link.label}
+                {pathname === link.path && (
+                  <span className={styles.youAreHere}>You're here</span>
+                )}
+              </RouterLink>
+            ))}
           </div>
 
           <div className={styles.actions}>
@@ -41,7 +59,7 @@ export function Header() {
 
           <button
             className={styles.mobileMenuBtn}
-            aria-label="Menú"
+            aria-label="Menu"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
@@ -59,12 +77,19 @@ export function Header() {
 
       <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
         <div className={styles.mobileMenuContent}>
-          <RouterLink to="/about" className={styles.mobileLink} onClick={() => setMobileMenuOpen(false)}>
-            About
-          </RouterLink>
-          <RouterLink to="/contact" className={styles.mobileLink} onClick={() => setMobileMenuOpen(false)}>
-            Contact
-          </RouterLink>
+          {NAV_LINKS.map(link => (
+            <RouterLink
+              key={link.path}
+              to={link.path}
+              className={`${styles.mobileLink} ${pathname === link.path ? styles.mobileLinkActive : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.label}
+              {pathname === link.path && (
+                <span className={styles.youAreHereMobile}>You're here</span>
+              )}
+            </RouterLink>
+          ))}
         </div>
       </div>
     </header>

@@ -18,7 +18,7 @@ interface AnimatedTextProps {
 
 const scrambleChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
-// Función helper para generar texto aleatorio del MISMO tamaño que el original
+// Helper function to generate random text with the SAME length as the original
 const generateScramble = (length: number) => {
   let result = '';
   for (let i = 0; i < length; i++) {
@@ -33,7 +33,7 @@ export function AnimatedText({
   className = '',
   delay = 0,
   duration = 0.8,
-  // Para scramble, 'chars' suele verse mucho mejor, pero funcionará con 'words' ahora
+  // For scramble, 'chars' usually looks much better, but will work with 'words' now
   splitBy = 'words',
   animation = 'blur',
   triggerOnView = true,
@@ -48,11 +48,11 @@ export function AnimatedText({
     if (allElements.length === 0) return;
 
     const scramble = (targetElements: HTMLElement[]) => {
-      // 1. Leer el texto desde data-original para evitar problemas con React Strict Mode
+      // 1. Read text from data-original to avoid issues with React Strict Mode
       const originalTexts = targetElements.map(el => el.getAttribute('data-original') || '');
       const proxy = { progress: 0 };
 
-      // 2. Estado inicial: símbolos con opacidad 0, respetando la longitud original
+      // 2. Initial state: symbols with opacity 0, respecting original length
       targetElements.forEach((el, i) => {
         const text = originalTexts[i];
         if (text.trim() !== '') {
@@ -84,7 +84,7 @@ export function AnimatedText({
             const originalText = originalTexts[i];
             if (originalText.trim() === '') return;
 
-            // Umbral de revelado secuencial
+            // Sequential reveal threshold
             const revealStart = (i / targetElements.length) * 0.6;
             const revealDuration = 0.3;
 
@@ -92,10 +92,10 @@ export function AnimatedText({
               const isLast = i === targetElements.length - 1;
               el.textContent = isLast ? originalText : originalText + ' ';
             } else if (progress >= revealStart) {
-              // Fase activa de descifrado
+              // Active decipher phase
               el.textContent = generateScramble(originalText.length);
             } else {
-              // Fase pasiva (descifrado más lento para no saturar el CPU)
+              // Passive phase (slower decipher to avoid CPU saturation)
               if (Math.random() > 0.8) {
                 el.textContent = generateScramble(originalText.length);
               }
@@ -160,7 +160,7 @@ export function AnimatedText({
 
     const trimmedContent = content.trim();
 
-    // HEMOS AÑADIDO `data-original` A TODOS LOS SPANS
+    // We added `data-original` to ALL spans
     if (splitBy === 'chars') {
       return trimmedContent.split('').map((char, i) => (
         <span key={i} data-animate data-original={char} style={{ display: 'inline-block' }}>

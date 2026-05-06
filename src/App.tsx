@@ -1,8 +1,22 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { RouterProvider, createBrowserRouter, useLocation } from 'react-router-dom';
 import { Layout } from './components/layout';
-import { Hero, StatsSection, ServicesSection, PhilosophySection, ProcessSection, FAQSection, FinalCTA } from './components/sections';
-import { AboutPage, ContactPage } from './pages';
+import { Hero, StatsSection, ServicesSection, DigitalSolutions, PhilosophySection, ProcessSection, FAQSection, FinalCTA } from './components/sections';
+import { AboutPage, ContactPage, SolutionsPage } from './pages';
 import './styles/variables.css';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }, [pathname]);
+
+  return null;
+}
 
 function HomePage() {
   return (
@@ -10,6 +24,7 @@ function HomePage() {
       <Hero />
       <StatsSection />
       <ServicesSection />
+      <DigitalSolutions />
       <PhilosophySection />
       <ProcessSection />
       <FAQSection />
@@ -18,18 +33,21 @@ function HomePage() {
   );
 }
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <><ScrollToTop /><Layout /></>,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: 'about', element: <AboutPage /> },
+      { path: 'contact', element: <ContactPage /> },
+      { path: 'solutions', element: <SolutionsPage /> },
+    ],
+  },
+]);
+
 function App() {
-  return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
