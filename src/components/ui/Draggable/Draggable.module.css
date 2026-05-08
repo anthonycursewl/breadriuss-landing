@@ -11,6 +11,19 @@
   cursor: grabbing;
 }
 
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content svg {
+  max-width: none;
+  user-select: none;
+}
+
 .dragHint {
   position: absolute;
   bottom: 12px;
@@ -34,20 +47,21 @@
   opacity: 0.6;
 }
 
-.content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@media (max-width: 899px) {
+  .container {
+    cursor: default;
+    height: auto !important;
+  }
 
-.content svg {
-  max-width: none;
-  user-select: none;
-}
+  .content {
+    overflow: visible;
+    height: auto;
+  }
 
-@media (min-width: 900px) {
+  .content > * {
+    height: auto;
+  }
+
   .dragHint {
     display: none;
   }

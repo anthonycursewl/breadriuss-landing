@@ -14,6 +14,7 @@ export function Draggable({ children, className, style }: DraggableProps) {
   const isDragging = useRef(false);
 
   const startDrag = useCallback((clientX: number, clientY: number) => {
+    if (window.innerWidth < 900) return;
     isDragging.current = true;
     lastCursor.current = { x: clientX, y: clientY };
     document.body.style.userSelect = 'none';
@@ -42,6 +43,8 @@ export function Draggable({ children, className, style }: DraggableProps) {
   }, []);
 
   useEffect(() => {
+    if (window.innerWidth < 900) return;
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -74,15 +77,18 @@ export function Draggable({ children, className, style }: DraggableProps) {
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if (e.button !== 0) return;
+    if (window.innerWidth < 900) return;
     e.preventDefault();
     startDrag(e.clientX, e.clientY);
   }, [startDrag]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (window.innerWidth < 900) return;
     moveDrag(e.clientX, e.clientY);
   }, [moveDrag]);
 
   const handleMouseUp = useCallback(() => {
+    if (window.innerWidth < 900) return;
     endDrag();
   }, [endDrag]);
 
