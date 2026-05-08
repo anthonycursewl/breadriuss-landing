@@ -1,14 +1,10 @@
-import { useEffect, lazy, Suspense } from 'react';
+import { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter, useLocation } from 'react-router-dom';
 import { Layout } from './components/layout';
 import { Hero, StatsSection, ServicesSection, DigitalSolutions, PhilosophySection, ProcessSection, FAQSection, FinalCTA } from './components/sections';
+import { AboutPage, ContactPage, SolutionsPage, NotFoundPage } from './pages';
 import { ErrorBoundary } from './components/ui';
 import './styles/variables.css';
-
-const AboutPage = lazy(() => import('./pages/About').then(m => ({ default: m.AboutPage })));
-const ContactPage = lazy(() => import('./pages/Contact').then(m => ({ default: m.ContactPage })));
-const SolutionsPage = lazy(() => import('./pages/Solutions').then(m => ({ default: m.SolutionsPage })));
-const NotFoundPage = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFoundPage })));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -44,14 +40,14 @@ const router = createBrowserRouter([
     element: <><ScrollToTop /><Layout /></>,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'about', element: <Suspense fallback={null}><AboutPage /></Suspense> },
-      { path: 'contact', element: <Suspense fallback={null}><ContactPage /></Suspense> },
-      { path: 'solutions', element: <Suspense fallback={null}><SolutionsPage /></Suspense> },
+      { path: 'about', element: <AboutPage /> },
+      { path: 'contact', element: <ContactPage /> },
+      { path: 'solutions', element: <SolutionsPage /> },
     ],
   },
   {
     path: '*',
-    element: <Suspense fallback={null}><NotFoundPage /></Suspense>,
+    element: <NotFoundPage />,
   },
 ]);
 
