@@ -134,6 +134,10 @@
   box-sizing: border-box;
 }
 
+.diagramContainer {
+  margin: var(--space-6) 0;
+}
+
 .imagePlaceholder span {
   font-size: 0.875rem;
   color: var(--color-text-muted);

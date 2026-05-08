@@ -2,6 +2,10 @@ import { Container } from '../../components/ui';
 import { AnimatedText } from '../../components/ui/AnimatedText';
 import { ScrollReveal } from '../../components/ui/ScrollReveal';
 import { Link } from '../../components/ui/Link';
+import { WebArchitectureDiagram } from '../../components/ui/WebArchitectureDiagram';
+import { MobileArchitectureDiagram } from '../../components/ui/MobileArchitectureDiagram';
+import { SecurityDiagram } from '../../components/ui/SecurityDiagram';
+import { Draggable } from '../../components/ui/Draggable';
 import styles from './Solutions.module.css';
 
 export function SolutionsPage() {
@@ -66,9 +70,9 @@ export function SolutionsPage() {
 });`}</code></pre>
                 </div>
 
-                <div className={styles.imagePlaceholder}>
-                  <span>Web Architecture Topology</span>
-                </div>
+                <Draggable className={styles.diagramContainer} style={{ height: '500px' }}>
+                  <WebArchitectureDiagram />
+                </Draggable>
               </div>
 
               <div className={styles.specsGrid}>
@@ -134,9 +138,9 @@ export function SolutionsPage() {
 });`}</code></pre>
                 </div>
 
-                <div className={styles.imagePlaceholder}>
-                  <span>Mobile Architecture Topology</span>
-                </div>
+                <Draggable className={styles.diagramContainer} style={{ height: '640px' }}>
+                  <MobileArchitectureDiagram />
+                </Draggable>
               </div>
 
               <div className={styles.specsGrid}>
@@ -200,9 +204,9 @@ export function SolutionsPage() {
 });`}</code></pre>
                 </div>
 
-                <div className={styles.imagePlaceholder}>
-                  <span>Security Architecture Topology</span>
-                </div>
+                <Draggable className={styles.diagramContainer} style={{ height: '820px' }}>
+                  <SecurityDiagram />
+                </Draggable>
               </div>
 
               <div className={styles.specsGrid}>
