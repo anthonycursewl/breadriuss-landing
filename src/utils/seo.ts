@@ -13,7 +13,7 @@ export function generateSEO(props: SEOProps): SEOProps {
   return {
     ...seoConfig,
     ...props,
-    ogImage: props.ogImage || `${BASE_URL}/og-image.png`,
+    ogImage: props.ogImage || `${BASE_URL}/brd/brd_lg_dark.svg`,
     canonical: props.canonical || BASE_URL,
   };
 }

@@ -1,25 +1,25 @@
+import { Link } from 'react-router-dom';
 import { Container } from '../../ui';
 import { useTheme } from '../../providers/ThemeProvider';
 import styles from './Footer.module.css';
 
-const footerLinks = {
+interface FooterLink {
+  label: string;
+  to: string;
+}
+
+const footerLinks: Record<string, FooterLink[]> = {
   services: [
-    { label: 'Threat Detection', href: '#services' },
-    { label: 'Security Architecture', href: '#services' },
-    { label: 'Incident Response', href: '#services' },
-    { label: '24/7 Monitoring', href: '#services' },
+    { label: 'Threat Detection', to: '/#services' },
+    { label: 'Security Architecture', to: '/#services' },
+    { label: 'Incident Response', to: '/#services' },
+    { label: '24/7 Monitoring', to: '/#services' },
   ],
   company: [
-    { label: 'About Us', href: '#about' },
-    { label: 'Our Approach', href: '#philosophy' },
-    { label: 'How We Work', href: '#process' },
-    { label: 'Contact', href: '#contact' },
-  ],
-  resources: [
-    { label: 'Security Blog', href: '#' },
-    { label: 'Case Studies', href: '#' },
-    { label: 'Documentation', href: '#' },
-    { label: 'Status', href: '#' },
+    { label: 'About Us', to: '/about' },
+    { label: 'Our Approach', to: '/#philosophy' },
+    { label: 'How We Work', to: '/#process' },
+    { label: 'Contact', to: '/#contact' },
   ],
 };
 
@@ -45,7 +45,7 @@ export function Footer() {
             <h4>Services</h4>
             <ul>
               {footerLinks.services.map((link) => (
-                <li key={link.label}><a href={link.href}>{link.label}</a></li>
+                <li key={link.label}><Link to={link.to}>{link.label}</Link></li>
               ))}
             </ul>
           </div>
@@ -54,7 +54,7 @@ export function Footer() {
             <h4>Company</h4>
             <ul>
               {footerLinks.company.map((link) => (
-                <li key={link.label}><a href={link.href}>{link.label}</a></li>
+                <li key={link.label}><Link to={link.to}>{link.label}</Link></li>
               ))}
             </ul>
           </div>
@@ -62,9 +62,9 @@ export function Footer() {
           <div className={styles.column}>
             <h4>Resources</h4>
             <ul>
-              {footerLinks.resources.map((link) => (
-                <li key={link.label}><a href={link.href}>{link.label}</a></li>
-              ))}
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/solutions">Solutions</Link></li>
             </ul>
           </div>
         </div>
