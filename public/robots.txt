@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://breadriuss.dev/sitemap.xml
+Sitemap: https://breadriuss.com/sitemap.xml

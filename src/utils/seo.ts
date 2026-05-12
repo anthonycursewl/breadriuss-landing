@@ -1,6 +1,6 @@
 import type { SEOProps } from '../types';
 
-const BASE_URL = 'https://breadriuss.dev';
+const BASE_URL = 'https://breadriuss.com';
 
 export const seoConfig: SEOProps = {
   title: 'Breadriuss | Desarrollo Web & Diseño UX',
